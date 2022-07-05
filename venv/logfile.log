@@ -1,0 +1,5 @@
+hostname1 172.16.0.9 webserver 317
+hostname4 172.16.0.10 webserver 31
+hostname5 172.16.0.91 webserver 61
+hostname2 172.16.0.121 webserver 29
+hostname3 172.16.0.15 webserver 102
