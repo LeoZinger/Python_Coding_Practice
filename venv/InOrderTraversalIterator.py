@@ -31,6 +31,24 @@ def iterInOrder(root):
                 # stack.append(curr_node.right)
             curr_node = curr_node.right
 
+def iterPreOrder(root):
+    if root:
+        stack = []
+        # print("stack: ", stack)
+        curr_node = root
+    print("iterPreOrder:", end=" ")
+    while stack or curr_node:
+        if curr_node:
+            print(curr_node.val, end=" ")
+            # print("appendig curr node to stack: ", curr_node.val)
+            stack.append(curr_node.right)
+            curr_node = curr_node.left
+            # print("stack: ", stack)
+        else:
+            curr_node = stack.pop()
+            # print("appendig curr.right node to stack: ", curr_node.right.val)
+                # stack.append(curr_node.right)
+
 class IterateInOrder:
     def __init__(self, root: TreeNode):
         self.curr_node = root
@@ -55,6 +73,11 @@ class IterateInOrder:
 
         return ret_node
 
+def findTreeHeight(node: TreeNode) -> int:
+    if not node:
+        return 0
+    return max(findTreeHeight(node.left)+1, findTreeHeight(node.right)+1)
+
 
 root = TreeNode(4)
 root.left = TreeNode(2)
@@ -63,10 +86,15 @@ root.left.left = TreeNode(1)
 root.left.right = TreeNode(3)
 root.right.left = TreeNode(5)
 root.right.right = TreeNode(7)
+
+print("Height of tree = ", findTreeHeight(root))
+
 # inOrderTraverse(root)
 # iterInOrder(root)
+iterPreOrder(root)
 
 iterateInOrder = IterateInOrder(root)
+print("Next:", end=" ")
 while iterateInOrder.hasNext():
     curr_node = iterateInOrder.next()
-    print("Next: ", curr_node.val)
+    print(curr_node.val, end=" ")
